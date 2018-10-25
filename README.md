@@ -17,4 +17,6 @@ https://github.com/udacity/pdsnd_github
 Google Lighthouse repo
 Any repo provided as part of the coursework
 
+### Additional comments
+Closing up the documentation in the file
 
