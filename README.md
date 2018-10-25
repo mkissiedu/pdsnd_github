@@ -1,15 +1,19 @@
 ### Date created
-Include the date you created this project and README file.
+October 25, 2018
 
 ### Project Title
-Replace the Project Title
+Post your Work on GitHub
 
 ### Description
-Describe what your project is about and what it does
+This project is a way to show what I have learnt about Version control.
 
 ### Files used
-Include the files used
+bikeshare.py
+bkeshare program data files
+.git.ignore file
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+https://github.com/udacity/pdsnd_github
+Google Lighthouse repo
+Any repo provided as part of the coursework
 
