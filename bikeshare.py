@@ -1,4 +1,5 @@
 # Please note that I have used code which was provided in the solution file for the practice problems to help complete the project
+# Loading Bikeshare project on Git as part of the Version control project on October 24, 2018
 import time
 import pandas as pd
 import numpy as np
@@ -18,8 +19,8 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
-  
+
+
     city = input('\nPlease provide the name of the city to analyze, Enter either chicago, new york city or washington:')
 
     next_entry = input('Please enter if you want to filter data by month, day,both or none: ')
@@ -35,7 +36,7 @@ def get_filters():
     elif next_entry == 'both':
            month = input('\nPlease enter a month from January to June to filter the data:')
            weekday = input('\nPlease enter the day of the week to filter the data: ')
-    
+
     print('-'*40)
     return city, month, weekday
 
@@ -53,10 +54,10 @@ def load_data(city, month, weekday):
     """
     df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     df['month'] = df['Start Time'].dt.month
     df['weekday'] = df['Start Time'].dt.weekday_name
-    
+
     #This is the section of the code which I have used from the solution file for the Practice problems to help complete the project
     if month != 'all':
       # filter by month to create the new dataframe
@@ -64,7 +65,7 @@ def load_data(city, month, weekday):
      months = ('january','february','march','april','may','june')
      month = months.index(month) + 1
      df = df[df['month'] == month]
-        
+
     if weekday != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['weekday'] == weekday.title()]
@@ -80,7 +81,7 @@ def time_stats(df):
     # TO DO: display the most common month
     common_month = df['month'].mode()[0]
     print('The most common month of travel is:',common_month)
-    
+
     # TO DO: display the most common day of week
     common_day_of_week = df['weekday'].mode()[0]
     print('The most common day of the week for travel is:',common_day_of_week)
@@ -96,7 +97,7 @@ def time_stats(df):
 
 
 def station_stats(df):
-    
+
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
@@ -126,8 +127,8 @@ def trip_duration_stats(df):
     # TO DO: display total travel time
     total_duration = df['Trip Duration'].sum()
     print('The total trip duration',total_duration)
-    
-    
+
+
 
 
     # TO DO: display mean travel time
@@ -157,11 +158,11 @@ def user_stats(df):
     youngest = df['Birth Year'].max()
     oldest = df['Birth Year'].min()
     popular_year = df['Birth Year'].mode()[0]
-    
+
     print('\nThe most common year of birth:',popular_year,'\n','The most recent year of birth:',youngest,'\n','The earliest year of birth:',oldest,'\n')
-    
-    
-       
+
+
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
