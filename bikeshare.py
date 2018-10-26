@@ -17,25 +17,46 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
 
+while True:
 
-    city = input('\nPlease provide the name of the city to analyze, Enter either chicago, new york city or washington:')
+        city = input('\nPlease provide the name of the city to analyze, Enter either chicago, new york city or washington:').lower()
+        if city  in ('chicago','new york city','washington'):
+                   next_entry = input('Please enter if you want to filter data by month, day,both or none: ')
+                   break
+    while next_entry not in ('month','day','both','none'):
+             next_entry = input('Please enter if you want to filter data by month, day,both or none: ')
+             if next_entry in ('month','day','both','none'):
+                             break
 
-    next_entry = input('Please enter if you want to filter data by month, day,both or none: ')
     if next_entry == 'none':
-           month = 'all'
-           weekday = 'all'
+                       month = 'all'
+                       weekday = 'all'
     elif next_entry == 'month':
-    # TO DO: get user input for month (all, january, february, ... , june)
-           month = input('\nPlease enter a month from January to June to filter the data:')
+                      month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                      weekday = 'all'
+                      while month not in ('january','february','march','april','may','june'):
+                         month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                         if month in ('january','february','march','april','may','june'):
+                             break
     elif next_entry == 'day':
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-            weekday = input('\nPlease enter the day of the week to filter the data: ')
+                      weekday = input('\nPlease enter the day of the week to filter the data: ').lower()
+                      month = 'all'
+                      while weekday not in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                         weekday = input('\nPlease enter the day of the week to filter the data:').lower()
+                         if weekday in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                             break
     elif next_entry == 'both':
-           month = input('\nPlease enter a month from January to June to filter the data:')
-           weekday = input('\nPlease enter the day of the week to filter the data: ')
-
+                      month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                      while month not in ('january','february','march','april','may','june'):
+                         month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                         if month in ('january','february','march','april','may','june'):
+                             break
+                      weekday = input('\nPlease enter the day of the week to filter the data: ').lower()
+                      while weekday not in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                         weekday = input('\nPlease enter the day of the week to filter the data:').lower()
+                         if weekday in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                             break
     print('-'*40)
     return city, month, weekday
 
@@ -77,19 +98,15 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # TO DO: display the most common month
     common_month = df['month'].mode()[0]
     print('The most common month of travel is:',common_month)
 
-    # TO DO: display the most common day of week
     common_day_of_week = df['weekday'].mode()[0]
     print('The most common day of the week for travel is:',common_day_of_week)
 
-    # TO DO: display the most common start hour
     df['Start hour'] = df['Start Time'].dt.hour
     common_hour = df['Start hour'].mode()[0]
     print('The most common start hour of travel is:',common_hour)
-
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -144,24 +161,23 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
     user_type = df['User Type'].value_counts()
     print('The total count of users',user_type)
 
 
-    # TO DO: Display counts of gender
-    gender = df['Gender'].value_counts()
-    print('\nThe count of people by gender is\n',gender)
+    try:
+        gender = df['Gender'].value_counts()
+        print('\nThe count of people by gender is\n',gender)
+    except:
+        print('There is no gender data in this file\n')
 
-    # TO DO: Display earliest, most recent, and most common year of birth
-    youngest = df['Birth Year'].max()
-    oldest = df['Birth Year'].min()
-    popular_year = df['Birth Year'].mode()[0]
-
-    print('\nThe most common year of birth:',popular_year,'\n','The most recent year of birth:',youngest,'\n','The earliest year of birth:',oldest,'\n')
-
-
-
+    try:
+        youngest = df['Birth Year'].max()
+        oldest = df['Birth Year'].min()
+        popular_year = df['Birth Year'].mode()[0]
+        print('\nThe most common year of birth:',popular_year,'\n','The most recent year of birth:',youngest,'\n','The earliest year of birth:',oldest,'\n')
+    except:
+        print('There is no year of birth data available\n')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
