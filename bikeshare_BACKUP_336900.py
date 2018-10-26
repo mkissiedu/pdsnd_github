@@ -18,7 +18,13 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+<<<<<<< HEAD
+    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+
     city = input('\nPlease provide the name of the city to analyze, Enter either chicago, new york city or washington:')
+=======
+>>>>>>> refactoring
 
 while True:
 
@@ -49,9 +55,22 @@ while True:
                          if weekday in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
                              break
     elif next_entry == 'both':
+<<<<<<< HEAD
            month = input('\nPlease enter a month from January to June to filter the data:')
            weekday = input('\nPlease enter the day of the week to filter the data: ')
 
+=======
+                      month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                      while month not in ('january','february','march','april','may','june'):
+                         month = input('\nPlease enter a month from January to June to filter the data:').lower()
+                         if month in ('january','february','march','april','may','june'):
+                             break
+                      weekday = input('\nPlease enter the day of the week to filter the data: ').lower()
+                      while weekday not in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                         weekday = input('\nPlease enter the day of the week to filter the data:').lower()
+                         if weekday in ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'):
+                             break
+>>>>>>> refactoring
     print('-'*40)
     return city, month, weekday
 
@@ -96,7 +115,10 @@ def time_stats(df):
     common_month = df['month'].mode()[0]
     print('The most common month of travel is:',common_month)
 
+<<<<<<< HEAD
     # TO DO: display the most common day of week
+=======
+>>>>>>> refactoring
     common_day_of_week = df['weekday'].mode()[0]
     print('The most common day of the week for travel is:',common_day_of_week)
 
@@ -142,6 +164,11 @@ def trip_duration_stats(df):
 
     total_duration = df['Trip Duration'].sum()
     print('The total trip duration',total_duration)
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> refactoring
 
 
     Average_travel = df['Trip Duration'].mean()/360
@@ -167,6 +194,7 @@ def user_stats(df):
     except:
         print('There is no gender data in this file\n')
 
+<<<<<<< HEAD
     # TO DO: Display earliest, most recent, and most common year of birth
     youngest = df['Birth Year'].max()
     oldest = df['Birth Year'].min()
@@ -176,6 +204,15 @@ def user_stats(df):
 
 
 
+=======
+    try:
+        youngest = df['Birth Year'].max()
+        oldest = df['Birth Year'].min()
+        popular_year = df['Birth Year'].mode()[0]
+        print('\nThe most common year of birth:',popular_year,'\n','The most recent year of birth:',youngest,'\n','The earliest year of birth:',oldest,'\n')
+    except:
+        print('There is no year of birth data available\n')
+>>>>>>> refactoring
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
