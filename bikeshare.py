@@ -1,5 +1,6 @@
 # Please note that I have used code which was provided in the solution file for the practice problems to help complete the project
 # Loading Bikeshare project on Git as part of the Version control project on October 24, 2018
+# Updating comment and format in the Bikeshare.py file to upload as part of Version Control project
 import time
 import pandas as pd
 import numpy as np
