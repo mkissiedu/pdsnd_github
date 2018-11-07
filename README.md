@@ -21,6 +21,5 @@ Google Lighthouse repo
 Any repo provided as part of the coursework
 
 ### Additional comments
-Updated the ignore file
 Closing up the document section
 
