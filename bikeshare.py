@@ -174,9 +174,6 @@ def user_stats(df):
 
     print('\nThe most common year of birth:',popular_year,'\n','The most recent year of birth:',youngest,'\n','The earliest year of birth:',oldest,'\n')
 
-
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
