@@ -8,11 +8,11 @@ November 6, 2018
 Post your Work on GitHub
 
 ### Description
-This project is a way to show what I have learnt about Version control.
+This project is a way to show what I have learnt about Version control.It is also a way for me to apply what has been taught in the course
 
 ### Files used
 bikeshare.py
-bikeshare program data files
+bikeshare program data files(.csv files)
 .git.ignore file
 
 ### Credits
